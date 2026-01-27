@@ -23,12 +23,13 @@
 
 ## 🚀 Featured Engineering & Architecture
 
-### 🛡️ Yield Bearing Vaults Protocol (Private R&D - In Progress)
-*A modular, production-grade architecture for Yield Aggregators decoupling fund accounting from investment logic.*
-- **Modular Design:** Strictly separates **The Vault** (User-facing, Accounting, Access Control) from **The Strategy** (Financial logic, e.g., Aave V3), enabling hot-swappable investment modules.
-- **Robust Security:** Implements **Pure ERC-4626** compliance and "Dead Shares" mechanisms to prevent inflation attacks and price manipulation.
-- **Status:** Core architecture fully tested. Currently integrating live strategies.
-- **Tech:** Solidity, Foundry, ERC-4626, Aave V3, Uniswap V3, GMX V2, Chainlink, OpenZeppelin.
+### 🛡️ Yield Bearing Vaults Protocol (Beta)
+*A modular ERC-4626 production-grade architecture decoupling vault accounting from yield strategies.* [**View Repository**](https://github.com/GushALKDev/evm-yield-bearing-vaults)
+- **Modular Architecture:** Separates **Vault** (Accounting, User Interface) from **Strategy** (Yield Logic), allowing interchangeable strategies (e.g., Aave).
+- **Security First:** Includes **Inflation Attack Protection** (Dead Shares), **Circuit Breaker** (Emergency Pause), and strict **Access Control**.
+- **Performance Fees:** Implements a **High Water Mark** mechanism to charge fees only on net profits.
+- **Status:** **Work In Progress (Beta)**. Core functionality tested. Unaudited.
+- **Tech:** Solidity 0.8.33, Foundry, ERC-4626, Aave V3, OpenZeppelin.
 
 ### 🔮 Prediction Market Protocol (Private R&D)
 *An advanced decentralized prediction market architected from scratch focusing on capital efficiency and atomic execution.*
@@ -38,21 +39,18 @@
 - **Tech:** Solidity, Foundry, Gnosis Conditional Tokens, OpenZeppelin.
 
 ### 🏛️ Multi-Level Real Yield Staking (O(1) Algorithm)
-* [**View Repository**](https://github.com/GushALKDev/evm-dexynth-multilevel-real-yield-staking)
-*A hardened staking contract designed to solve linear gas scaling issues in reward distribution.*
+*A hardened staking contract designed to solve linear gas scaling issues in reward distribution.* [**View Repository**](https://github.com/GushALKDev/evm-dexynth-multilevel-real-yield-staking)
 - **The Breakthrough:** Replaced legacy loop-based reward logic with an **"O(1) accumulator model"**.
 - **Impact:** Achieved **~97% gas reduction** for claiming rewards, ensuring constant-time execution regardless of staker count.
 - **Features:** Lock-up levels, Real Yield distribution, and emergency withdraw mechanics.
 
 ### 🌌 Pulsar DAO (Solana/Rust)
-* [**View Repository**](https://github.com/GushALKDev/solana_pulsar_dao)
-*Redefining governance on Solana to combat voter apathy and whale dominance.*
+*Redefining governance on Solana to combat voter apathy and whale dominance.* [**View Repository**](https://github.com/GushALKDev/solana_pulsar_dao)
 - **Architecture:** Implements a novel **Hybrid Voting model** with Proxy Lock security and Trustless Treasury execution.
 - **Stack:** Built purely in **Rust** using the **Anchor** framework.
 
 ### 🤖 GMX V2 AI Agent
-* [**View Repository**](https://github.com/GushALKDev/gmx-v2-ai-agent)
-*Bridging the gap between Natural Language Processing (NLP) and DeFi execution.*
+*Bridging the gap between Natural Language Processing (NLP) and DeFi execution.* [**View Repository**](https://github.com/GushALKDev/gmx-v2-ai-agent)
 - **Functionality:** An AI-powered conversational bot capable of executing complex trades on **GMX V2 (Arbitrum)** via Telegram commands.
 - **Tech:** Node.js, TypeScript, OpenAI API, Ethers.js.
 
