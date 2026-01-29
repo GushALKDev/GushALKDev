@@ -25,17 +25,21 @@
 
 ### 🛡️ Yield Bearing Vaults Protocol (Beta)
 *A modular ERC-4626 production-grade architecture decoupling vault accounting from yield strategies.* [**View Repository**](https://github.com/GushALKDev/evm-yield-bearing-vaults)
-- **Modular Architecture:** Separates **Vault** (Accounting, User Interface) from **Strategy** (Yield Logic), allowing interchangeable strategies (e.g., Aave).
-- **Security First:** Includes **Inflation Attack Protection** (Dead Shares), **Circuit Breaker** (Emergency Pause), and strict **Access Control**.
-- **Performance Fees:** Implements a **High Water Mark** mechanism to charge fees only on net profits.
-- **Status:** **Work In Progress (Beta)**. Core functionality tested. Unaudited.
-- **Tech:** Solidity 0.8.33, Foundry, ERC-4626, Aave V3, OpenZeppelin.
+- **Modular Architecture:** Decoupled Vault/Strategy pattern enabling atomic pass-through deposits; funds route instantly (User → Vault → Strategy → Protocol) in a single transaction.
+- **Leveraged Loop:** Engineered an atomic **Uniswap V4 Flash Loan** (zero fee) & **Aave V3 E-Mode** strategy to cycle liquidity, maximizing LTV (up to 93%) and capturing yield spread with up to 10x leverage. Proportional deleverage maintains leverage ratio on withdrawals.
+- **Automatic Health Monitoring:** Continuous position health checks with automatic emergency divest when health factor drops below threshold, preventing liquidations while maintaining user fund access.
+- **Emergency Recovery:** Seamless automatic reinvestment when emergency mode is deactivated, restoring leveraged positions without manual intervention.
+- **Defensive Security:** Implemented critical protections including **Emergency Circuit Breakers**, **Reentrancy Guards**, **Inflation Attack Prevention** (Dead Shares), **Optimized Withdrawals** (skip divest during emergency), and access-controlled emergency activation.
+- **Financial Integrity:** Enforced **High Water Mark** accounting to align fees with net performance.
+- **Status:** **Work In Progress (Beta)**. Core functionality tested with **139 tests** achieving **93.72% coverage**. Unaudited.
+- **Tech:** Solidity 0.8.26, Foundry, ERC-4626, Aave V3, Uniswap V4, OpenZeppelin.
 
 ### 🔮 Prediction Market Protocol (Private R&D)
 *An advanced decentralized prediction market architected from scratch focusing on capital efficiency and atomic execution.*
-- **Core Architecture:** Implements a custom **CPMM (Constant Product Market Maker)** specifically tuned for binary outcome trading.
-- **Innovation:** Features **Virtual Liquidity** mechanics and 1-click atomic trading (Collateral ↔ Position) to reduce UX friction.
-- **Security:** Includes a dual-fee structure and advanced quadratic exit math, rigorously secured via **Foundry invariant tests**.
+- **Virtual CPMM Math:** Engineered a custom **Virtual Liquidity AMM** to prevent liquidity draining and ensure continuous price discovery (soft bounds).
+- **Mechanism Design:** Implements an **"Entry Toll" fee model** (High Entry / Zero Exit) to maximize revenue while incentivizing arbitrage rebalancing.
+- **Architecture:** Decoupled trading logic from custody (Gnosis CTF), implementing an **Atomic Router** for 1-click swaps and quadratic exit calculations.
+- **Security & Ops:** Features **Inflation Attack Protection** (dead shares), **CREATE2** deterministic deployment, and rigorous invariant testing.
 - **Tech:** Solidity, Foundry, Gnosis Conditional Tokens, OpenZeppelin.
 
 ### 🏛️ Multi-Level Real Yield Staking (O(1) Algorithm)
