@@ -23,7 +23,7 @@
 
 ## 🚀 Featured Engineering & Architecture
 
-### 🛡️ Yield Bearing Vaults Protocol (Beta)
+### 🛡️ Yield Bearing Vaults Protocol
 *A modular ERC-4626 production-grade architecture decoupling vault accounting from yield strategies.* [**View Repository**](https://github.com/GushALKDev/evm-yield-bearing-vaults)
 - **Modular Architecture:** Decoupled Vault/Strategy pattern enabling atomic pass-through deposits; funds route instantly (User → Vault → Strategy → Protocol) in a single transaction.
 - **Leveraged Loop:** Engineered an atomic **Uniswap V4 Flash Loan** (zero fee) & **Aave V3 E-Mode** strategy to cycle liquidity, maximizing LTV (up to 93%) and capturing yield spread with up to 10x leverage. Proportional deleverage maintains leverage ratio on withdrawals.
@@ -31,7 +31,8 @@
 - **Emergency Recovery:** Seamless automatic reinvestment when emergency mode is deactivated, restoring leveraged positions without manual intervention.
 - **Defensive Security:** Implemented critical protections including **Emergency Circuit Breakers**, **Reentrancy Guards**, **Inflation Attack Prevention** (Dead Shares), **Optimized Withdrawals** (skip divest during emergency), and access-controlled emergency activation.
 - **Financial Integrity:** Enforced **High Water Mark** accounting to align fees with net performance.
-- **Status:** **Work In Progress (Beta)**. Core functionality tested with **139 tests** achieving **93.72% coverage**. Unaudited.
+- **Gas Optimizations:** Storage packing (~40k gas deployment savings), computation caching (~250-400 gas per flash loan), batch whitelist operations (~21k gas per additional address), and unchecked math where safe.
+- **Testing & Coverage:** **178 tests** (100 unit, 35 integration, 43 fuzzing) achieving **93.72% coverage** with **11,008+ fuzzing iterations**. All invariants verified.
 - **Tech:** Solidity 0.8.26, Foundry, ERC-4626, Aave V3, Uniswap V4, OpenZeppelin.
 
 ### 🔮 Prediction Market Protocol (Private R&D)
