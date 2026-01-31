@@ -32,8 +32,10 @@
 - **Defensive Security:** Implemented critical protections including **Emergency Circuit Breakers**, **Reentrancy Guards**, **Inflation Attack Prevention** (Dead Shares), **Optimized Withdrawals** (skip divest during emergency), and access-controlled emergency activation.
 - **Financial Integrity:** Enforced **High Water Mark** accounting to align fees with net performance.
 - **Gas Optimizations:** Storage packing (~40k gas deployment savings), computation caching (~250-400 gas per flash loan), batch whitelist operations (~21k gas per additional address), and unchecked math where safe.
-- **Testing & Coverage:** **178 tests** (100 unit, 35 integration, 43 fuzzing) achieving **93.72% coverage** with **11,008+ fuzzing iterations**. All invariants verified.
+- **Testing & Coverage:** **205 tests** achieving **93.72% coverage** with **352,608+ total iterations**. Includes **27 stateful fuzzing invariant tests** using the handler pattern (BaseVaultHandler, WETHLoopStrategyHandler, AdminHandler) with ghost variable tracking. Supports **dual-mode execution**: mock mode (345,600 operations, 256 runs × 50 depth) for fast iteration, and fork mode (real Aave V3 + Uniswap V4) for protocol validation.
 - **Tech:** Solidity 0.8.26, Foundry, ERC-4626, Aave V3, Uniswap V4, OpenZeppelin.
+
+
 
 ### 🔮 Prediction Market Protocol (Private R&D)
 *An advanced decentralized prediction market architected from scratch focusing on capital efficiency and atomic execution.*
