@@ -23,7 +23,7 @@
 
 ## 🚀 Featured Engineering & Architecture
 
-### ⚡ Synthetic Trading Protocol (In progress...)
+### 📈 Synthetic Trading Protocol (In progress...)
 
 _A high-leverage synthetic futures platform utilizing a Single-Sided Liquidity (SSL) Unified Vault and a 3-layer solvent defense system._ [**View Repository**](https://github.com/GushALKDev/evm-synthetic-trading-protocol)
 
