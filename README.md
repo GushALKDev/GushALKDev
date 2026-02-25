@@ -1,6 +1,6 @@
 # Hi there, I'm Gustavo Martín 👋
 
-### Senior Smart Contract Engineer | Security Researcher | DeFi Architecture
+### Senior Smart Contract Engineer | Protocol Architect | Security Researcher
 
 [![Linkedin](https://img.shields.io/badge/LinkedIn-Connect-blue?style=flat&logo=linkedin)](https://www.linkedin.com/in/gustavomaral/)
 
@@ -106,7 +106,7 @@ Beyond smart contracts, I architect the off-chain nervous system that powers DeF
 
 ### 💻 Tech Stack Distribution
 
-<img src="https://github-readme-stats.vercel.app/api/top-langs/?username=GushALKDev&layout=compact&theme=radical&hide_border=true&bg_color=0d1117&title_color=58a6ff&icon_color=58a6ff&hide=html,css" height="200" alt="languages graph" />
+<img src="https://github-readme-stats-fast.vercel.app/api/top-langs/?username=GushALKDev&layout=compact&theme=radical&hide_border=true&bg_color=0d1117&title_color=58a6ff&icon_color=58a6ff&hide=html,css" height="200" alt="languages graph" />
 
 ---
 
