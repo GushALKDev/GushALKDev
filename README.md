@@ -23,6 +23,17 @@
 
 ## 🚀 Featured Engineering & Architecture
 
+### 🏦 Institutional RWA Tokenization (In progress...)
+
+_A permissioned security token for a real-estate-backed note, implementing the ERC-3643 identity and compliance model from scratch._ [**View Repository**](https://github.com/GushALKDev/evm-rwa-security-token)
+
+- **Compliance as Architecture:** Every transfer is gated by an identity check and a pluggable rule engine. Inverts the ERC-20 default: transfers are forbidden unless identity and compliance approve, not permitted unless the balance is short.
+- **Dual Trust Model (EIP-712):** Two identity registration paths, an agent-written record and a **signed attestation** verified on-chain against an authorized claim signer. The signed payload binds investor, attributes, expiry and a **per-user nonce** under a domain separator, closing replay across chains, after KYC lapse, and within the validity window.
+- **Modular Compliance Engine:** Rules (max holders maintained incrementally in O(1), country restrictions, per-investor lockups) plug into a composable engine, so the rule set changes by governance action rather than by redeploying the token.
+- **Institutional Custody:** Custodian-gated **forced recovery** moves a position from a lost or compromised wallet to a new verified one, carrying the full freeze state across so recovery cannot launder a freeze, and preserving total supply.
+- **On-Chain / Off-Chain Boundary:** Legal documents anchored by **keccak256 of the content, not the URI** (ERC-1643), so a silent amendment to the terms is evident on-chain.
+- **Tech:** Solidity 0.8.24, Foundry, OpenZeppelin v5, EIP-712, ERC-3643 (T-REX) subset, ERC-1643.
+
 ### 📈 Synthetic Trading Protocol (In progress...)
 
 _A high-leverage synthetic futures platform utilizing a Single-Sided Liquidity (SSL) Unified Vault and a 3-layer solvent defense system._ [**View Repository**](https://github.com/GushALKDev/evm-synthetic-trading-protocol)
