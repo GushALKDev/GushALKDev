@@ -23,6 +23,16 @@
 
 ## 🚀 Featured Engineering & Architecture
 
+### 🏦 Money Market - Lending / Borrowing Protocol (In progress...)
+_An isolated, single-base money market on EVM, architecturally inspired by Compound III (Comet), built from scratch around a provable-solvency thesis._ [**View Repository**](https://github.com/GushALKDev/evm-lending-borrowing-protocol)
+- **Provable Solvency by Construction:** Index-based accounting (a signed `int104` principal times a global supply/borrow index) where every conversion rounds toward the protocol, supply present value **floors** and borrow principal **ceils**, so the sum of balances can never exceed backing. Enforced by a stateful invariant suite: the accounting identity, exact principal-to-totals equality, and directed-rounding invariants.
+- **Single Accounting Path:** Every base movement (supply, withdraw, borrow, repay, absorb settlement) routes through **one** internal mutator across the positive/negative sign crossing, so reward accounting can never drift from balance accounting. Borrowing is simply a withdrawal taken past zero on a signed balance, no separate debt token.
+- **Isolated, Single-Base Design:** One borrowable base asset (USDC) with **supply-only collateral** that is never rehypothecated, containing collateral risk to the market instead of a shared pool. **Separate borrow and liquidation collateral factors** give every position a price buffer before it becomes liquidatable.
+- **Derived Supply Rate (ADR):** A deliberate divergence from Comet's two independent curves: the supply rate is **derived** from the borrow curve (`borrowRate * U * (1 - reserveFactor)`), making the borrower-interest / supplier-interest / reserve split **exact by construction** under directed rounding, rather than relying on two hand-tuned curves.
+- **Absorb Liquidation with Explicit Bad Debt:** Comet-style two-step liquidation. The protocol **absorbs** an underwater account against reserves in one permissionless call, seizing collateral at a `liquidationFactor` penalty and crediting any surplus back to the borrower as base supply, then sells the seized collateral to liquidators at a store-front discount. Uncovered debt is recognized as **negative reserves**, not left as dust.
+- **Confidence-Aware Oracle:** Pyth pull as the primary source with a **Chainlink deviation anchor** plus staleness and confidence checks. Borrow capacity is valued at `price - conf` and absorb eligibility at `price + conf`, so wide-uncertainty periods tighten borrowing and harden liquidation instead of trusting a single point estimate.
+- **Tech:** Solidity 0.8.26, Foundry, OpenZeppelin v5, Solady, Pyth, Chainlink. Invariant, fuzz, and fork tested.
+
 ### 🏦 Institutional RWA Tokenization (In progress...)
 
 _A permissioned security token for a real-estate-backed note, implementing the ERC-3643 identity and compliance model from scratch._ [**View Repository**](https://github.com/GushALKDev/evm-rwa-security-token)
@@ -34,7 +44,7 @@ _A permissioned security token for a real-estate-backed note, implementing the E
 - **On-Chain / Off-Chain Boundary:** Legal documents anchored by **keccak256 of the content, not the URI** (ERC-1643), so a silent amendment to the terms is evident on-chain.
 - **Tech:** Solidity 0.8.24, Foundry, OpenZeppelin v5, EIP-712, ERC-3643 (T-REX) subset, ERC-1643.
 
-### 📈 Synthetic Trading Protocol (In progress...)
+### 📈 Synthetic Trading Protocol
 
 _A high-leverage synthetic futures platform utilizing a Single-Sided Liquidity (SSL) Unified Vault and a 3-layer solvent defense system._ [**View Repository**](https://github.com/GushALKDev/evm-synthetic-trading-protocol)
 
