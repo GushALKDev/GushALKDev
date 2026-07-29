@@ -23,7 +23,7 @@
 
 ## 🚀 Featured Engineering & Architecture
 
-### 🏦 Money Market - Lending / Borrowing Protocol (In progress...)
+### 🏦 Money Market - Lending / Borrowing Protocol
 _An isolated, single-base money market on EVM, architecturally inspired by Compound III (Comet), built from scratch around a provable-solvency thesis._ [**View Repository**](https://github.com/GushALKDev/evm-lending-borrowing-protocol)
 - **Provable Solvency by Construction:** Index-based accounting (a signed `int104` principal times a global supply/borrow index) where every conversion rounds toward the protocol, supply present value **floors** and borrow principal **ceils**, so the sum of balances can never exceed backing. Enforced by a stateful invariant suite: the accounting identity, exact principal-to-totals equality, and directed-rounding invariants.
 - **Single Accounting Path:** Every base movement (supply, withdraw, borrow, repay, absorb settlement) routes through **one** internal mutator across the positive/negative sign crossing, so reward accounting can never drift from balance accounting. Borrowing is simply a withdrawal taken past zero on a signed balance, no separate debt token.
@@ -33,7 +33,7 @@ _An isolated, single-base money market on EVM, architecturally inspired by Compo
 - **Confidence-Aware Oracle:** Pyth pull as the primary source with a **Chainlink deviation anchor** plus staleness and confidence checks. Borrow capacity is valued at `price - conf` and absorb eligibility at `price + conf`, so wide-uncertainty periods tighten borrowing and harden liquidation instead of trusting a single point estimate.
 - **Tech:** Solidity 0.8.26, Foundry, OpenZeppelin v5, Solady, Pyth, Chainlink. Invariant, fuzz, and fork tested.
 
-### 🏦 Institutional RWA Tokenization (In progress...)
+### 🏦 Institutional RWA Tokenization
 
 _A permissioned security token for a real-estate-backed note, implementing the ERC-3643 identity and compliance model from scratch._ [**View Repository**](https://github.com/GushALKDev/evm-rwa-security-token)
 
