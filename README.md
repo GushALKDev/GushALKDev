@@ -13,13 +13,13 @@ Currently tech lead at Roofcast, a real-estate prediction market protocol, and i
 <td width="50%" valign="top">
 <a href="https://github.com/GushALKDev/evm-lending-borrowing-protocol"><picture><source media="(prefers-color-scheme: dark)" srcset="./assets/money-market-dark.svg"><img src="./assets/money-market-light.svg" alt="Money market" width="100%"></picture></a>
 <p>Isolated, single-base lending market inspired by Compound III, built around provable solvency: directed rounding, a single accounting path and bad debt recorded as negative reserves.</p>
-<p><b>277 tests, coverage above 95% per contract, stateful invariant suite</b></p>
+<p><b>331 tests, 17 stateful invariants, coverage above 95% on every contract</b></p>
 <p><a href="https://github.com/GushALKDev/evm-lending-borrowing-protocol">Repository</a></p>
 </td>
 <td width="50%" valign="top">
 <a href="https://github.com/GushALKDev/evm-yield-bearing-vaults"><picture><source media="(prefers-color-scheme: dark)" srcset="./assets/vaults-dark.svg"><img src="./assets/vaults-light.svg" alt="ERC-4626 vaults" width="100%"></picture></a>
 <p>Vault accounting decoupled from yield strategies, with an atomic leveraged loop on Uniswap V4 flash loans and Aave V3 E-Mode.</p>
-<p><b>205 tests, 93.72% coverage, 27 stateful invariant tests</b></p>
+<p><b>365 tests, 27 stateful invariants, 98.6% line coverage</b></p>
 <p><a href="https://github.com/GushALKDev/evm-yield-bearing-vaults">Repository</a></p>
 </td>
 </tr>

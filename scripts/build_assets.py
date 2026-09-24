@@ -145,13 +145,13 @@ def diagram(kind, c, x, y, w, h):
         o.append(text("x · y = k", "reg", 20, x + w - 8, y + 28, fg, "end"))
     elif kind == "rwa-security-token":
         steps = ["Identity", "Compliance", "Transfer"]
-        bw, gap = 140, (w - 3 * 140) / 2
+        bw = min(140, (w - 70) / 3); gap = (w - 3 * bw) / 2
         cy = y + h / 2 - 10
         for i, s in enumerate(steps):
             bx = x + i * (bw + gap)
             fill, tc = (fg, c["node"]) if i == 2 else (c["node"], fg)
             o.append(f'<rect x="{bx:.1f}" y="{cy-34}" width="{bw}" height="68" rx="10" fill="{fill}" stroke="{fg}" stroke-width="2.5"/>')
-            o.append(text(s, "semi", 19, bx + bw / 2, cy + 7, tc, "middle"))
+            o.append(text(s, "semi", 19 if bw >= 130 else 17, bx + bw / 2, cy + 7, tc, "middle"))
             if i < 2:
                 ax0, ax1 = bx + bw + 8, bx + bw + gap - 8
                 o.append(f'<line x1="{ax0:.1f}" y1="{cy}" x2="{ax1-10:.1f}" y2="{cy}" stroke="{fg}" stroke-width="3"/>')
@@ -217,3 +217,75 @@ if __name__ == "__main__":
         for k in PROJECTS:
             write(f"{k}-{mode}.svg", thumb(k, mode))
     print("assets written to", OUT)
+
+
+# ---------------------------------------------------------------- social previews (1280x640 PNG)
+SOCIAL = {  # key: (title, sentence, stats or chips, hue key or colour)
+    "money-market": ("Money market", "Isolated lending market inspired by Compound III, built around provable solvency.",
+                     [("331", "tests"), ("17", "stateful invariants"), (">95%", "coverage per contract")]),
+    "vaults": ("ERC-4626 vaults", "Modular vaults with an atomic leveraged loop on Uniswap V4 flash loans and Aave V3 E-Mode.",
+               [("365", "tests"), ("27", "stateful invariants"), ("98.6%", "line coverage")]),
+    "staking": ("Real-yield staking", "A later independent rebuild of my Dexynth staking with an O(1) reward accumulator.",
+                [(">96%", "less unstake gas"), (">72%", "less harvest gas"), ("O(1)", "reward accounting")]),
+    "rwa-security-token": ("RWA security token", "Permissioned security token built on the ERC-3643 identity and compliance model.",
+                           [("ERC-3643", "identity and compliance"), ("EIP-712", "signed attestations"), ("ERC-1643", "document anchoring")]),
+    "synthetic": ("Synthetic trading", "Leveraged synthetic futures against a single-sided USDC vault.",
+                  [("1", "USDC vault as counterparty"), ("3", "solvency layers"), ("Pyth", "anchored to Chainlink")]),
+    "prediction-market": ("Prediction market", "Research proof of concept, built before my work at Roofcast.",
+                          [("CPMM", "virtual liquidity"), ("CTF", "Gnosis custody"), ("PoC", "not production code")]),
+    "security-review-reports": ("Security reviews", "Reports and findings from my smart contract security reviews.",
+                                ["Vault Guardians", "Thunder Loan", "Boss Bridge", "TSwap"]),
+}
+SOCIAL_HUE = {"security-review-reports": "#8C2F2B"}
+
+def wrap(txt, key, size, maxw):
+    lines, cur = [], ""
+    for word in txt.split():
+        trial = (cur + " " + word).strip()
+        if shape(trial, key, size)[1] <= maxw or not cur:
+            cur = trial
+        else:
+            lines.append(cur); cur = word
+    return lines + [cur]
+
+def social(key):
+    title, sentence, extra = SOCIAL[key]
+    hue = SOCIAL_HUE.get(key) or PROJECTS[key][1]
+    c, W, H, X = colours(hue, "light"), 1280, 640, 80
+    b = [f'<rect width="{W}" height="{H}" fill="{c["bg"]}"/>', f'<rect width="{W}" height="16" fill="{hue}"/>',
+         text(title, "semi", 66, X, 150, hue)]
+    for i, line in enumerate(wrap(sentence, "reg", 30, 640)):
+        b.append(text(line, "reg", 30, X, 212 + i * 42, "#1F2328"))
+    if isinstance(extra[0], tuple):
+        sx = X
+        for big, lab in extra:
+            b.append(text(big, "semi", 46, sx, 400, hue))
+            b.append(text(lab, "reg", 20, sx, 436, TEXT_MUTE["light"]))
+            sx += max(shape(big, "semi", 46)[1], shape(lab, "reg", 20)[1]) + 48
+    else:
+        sx, sy = X, 380
+        for chip in extra:
+            cw = shape(chip, "semi", 22)[1] + 36
+            if sx + cw > 760:
+                sx, sy = X, sy + 62
+            b.append(f'<rect x="{sx}" y="{sy}" width="{cw:.1f}" height="46" rx="23" fill="#FFFFFF" stroke="{hue}" stroke-width="2.5"/>')
+            b.append(text(chip, "semi", 22, sx + cw / 2, sy + 31, hue, "middle"))
+            sx += cw + 14
+    if key in PROJECTS:
+        b += diagram(key, c, 770, 140, 430, 200)
+    else:  # security: shield with a check mark
+        cx, top = 1010, 150
+        b.append(f'<path d="M{cx},{top} L{cx+120},{top+44} L{cx+120},{top+140} C{cx+120},{top+220} {cx+60},{top+262} {cx},{top+290} '
+                 f'C{cx-60},{top+262} {cx-120},{top+220} {cx-120},{top+140} L{cx-120},{top+44} Z" fill="{c["node"]}" stroke="{hue}" stroke-width="5"/>')
+        b.append(f'<polyline points="{cx-52},{top+146} {cx-14},{top+186} {cx+56},{top+104}" fill="none" stroke="{hue}" '
+                 f'stroke-width="12" stroke-linecap="round" stroke-linejoin="round"/>')
+    b.append(f'<line x1="{X}" y1="548" x2="{W-X}" y2="548" stroke="{hue}" stroke-opacity=".25" stroke-width="2"/>')
+    b.append(text("Gustavo Martín", "semi", 24, X, 596, "#1F2328"))
+    b.append(text("github.com/GushALKDev", "reg", 24, W - X, 596, TEXT_MUTE["light"], "end"))
+    return svg(W, H, b, title)
+
+def build_social(outdir):
+    import cairosvg
+    os.makedirs(outdir, exist_ok=True)
+    for k in SOCIAL:
+        cairosvg.svg2png(bytestring=social(k).encode(), write_to=os.path.join(outdir, f"{k}.png"))
