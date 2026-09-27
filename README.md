@@ -26,14 +26,14 @@ Currently tech lead at Roofcast, a real-estate prediction market protocol, and i
 <tr>
 <td width="50%" valign="top">
 <a href="https://github.com/GushALKDev/evm-dexynth-multilevel-real-yield-staking"><picture><source media="(prefers-color-scheme: dark)" srcset="./assets/staking-dark.svg"><img src="./assets/staking-light.svg" alt="Real-yield staking" width="100%"></picture></a>
-<p>A later independent rebuild of the staking system I wrote at Dexynth, with an O(1) reward accumulator.</p>
-<p><b>Over 96% less gas to unstake, over 72% less to harvest</b></p>
+<p>A later independent rework of the staking system I wrote at Dexynth, with an O(1) reward accumulator.</p>
+<p><b>132 tests, 5 stateful invariants, 100% line and branch coverage</b></p>
 <p><a href="https://github.com/GushALKDev/evm-dexynth-multilevel-real-yield-staking">Repository</a></p>
 </td>
 <td width="50%" valign="top">
 <a href="https://github.com/GushALKDev/evm-rwa-security-token"><picture><source media="(prefers-color-scheme: dark)" srcset="./assets/rwa-security-token-dark.svg"><img src="./assets/rwa-security-token-light.svg" alt="RWA security token" width="100%"></picture></a>
-<p>Permissioned security token implementing the ERC-3643 identity and compliance model from scratch: signed EIP-712 attestations, a modular compliance engine and custodian-gated recovery.</p>
-<p><b>Solidity, Foundry, EIP-712, ERC-3643 subset, ERC-1643</b></p>
+<p>Permissioned security token implementing a subset of the ERC-3643 identity and compliance model from scratch: signed EIP-712 attestations, a modular compliance engine and custodian-gated recovery.</p>
+<p><b>421 tests, 12 stateful invariants, 100% branch coverage on every src contract</b></p>
 <p><a href="https://github.com/GushALKDev/evm-rwa-security-token">Repository</a></p>
 </td>
 </tr>
