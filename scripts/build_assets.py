@@ -230,7 +230,7 @@ SOCIAL = {  # key: (title, sentence, stats or chips, hue key or colour)
     "rwa-security-token": ("RWA security token", "Permissioned security token implementing a subset of the ERC-3643 identity and compliance model.",
                            [("421", "tests"), ("12", "stateful invariants"), ("100%", "branch coverage")]),
     "synthetic": ("Synthetic trading", "Leveraged synthetic futures against a single-sided USDC vault.",
-                  [("1", "USDC vault as counterparty"), ("3", "solvency layers"), ("Pyth", "anchored to Chainlink")]),
+                  [("818", "tests"), ("32", "stateful invariants"), ("100%", "branch coverage")]),
     "prediction-market": ("Prediction market", "Research proof of concept, built before my work at Roofcast.",
                           [("CPMM", "virtual liquidity"), ("CTF", "Gnosis custody"), ("PoC", "not production code")]),
     "security-review-reports": ("Security reviews", "Reports and findings from my smart contract security reviews.",

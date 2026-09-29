@@ -40,8 +40,8 @@ Currently tech lead at Roofcast, a real-estate prediction market protocol, and i
 <tr>
 <td width="50%" valign="top">
 <a href="https://github.com/GushALKDev/evm-synthetic-trading-protocol"><picture><source media="(prefers-color-scheme: dark)" srcset="./assets/synthetic-dark.svg"><img src="./assets/synthetic-light.svg" alt="Synthetic trading" width="100%"></picture></a>
-<p>Leveraged synthetic futures against a single-sided USDC vault, with a three-layer solvency design and Pyth prices anchored to Chainlink. An independent design drawing on my work at Dexynth.</p>
-<p><b>Solidity, Foundry, ERC-4626, Pyth, Chainlink</b></p>
+<p>Leveraged synthetic futures against a single-sided USDC vault, with a three-layer solvency design and Pyth prices anchored to Chainlink. An independent implementation drawing on my work at Dexynth.</p>
+<p><b>818 tests, 32 stateful invariants, 100% line and branch coverage on every contract</b></p>
 <p><a href="https://github.com/GushALKDev/evm-synthetic-trading-protocol">Repository</a></p>
 </td>
 <td width="50%" valign="top">
